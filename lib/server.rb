@@ -15,9 +15,11 @@ class Message < ActiveRecord::Base
 end
 
 post '/' do
-  input = params.fetch('text')
+  input    = params.fetch('text')
   username = params.fetch('user_name')
-  text = if username != 'scribebot'
+  token    = params.fetch('token')
+
+  text = if token == ENV['SLACK_TOKEN'].to_s && username != 'scribebot'
     regex = /\Ascribe:?\s+/
     if input =~ regex
       message = input.gsub(regex, '')
