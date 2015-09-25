@@ -1,7 +1,4 @@
 require "sinatra"
 require "sinatra/activerecord"
 
-set :database, {
-  adapter:  "postgresql",
-  database: ENV.fetch('DATABASE_URL', 'scribebot_development')
-}
+set :database, (ENV['DATABASE_URL'] || 'postgres://localhost/scribebot_development')
