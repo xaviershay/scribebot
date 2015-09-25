@@ -27,7 +27,7 @@ post '/' do
           message: message,
           username: username,
         )
-        "+:heavy_check_mark:"
+        ":heavy_check_mark:"
       else
         case message
         when "recent"
